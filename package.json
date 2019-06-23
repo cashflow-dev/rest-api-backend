@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/cashflow-dev/rest-api-backend/issues"
   },
-  "homepage": "https://github.com/cashflow-dev/rest-api-backend#readme"
+  "homepage": "https://github.com/cashflow-dev/rest-api-backend#readme",
+  "devDependencies": {
+    "typescript": "^3.5.2"
+  }
 }
