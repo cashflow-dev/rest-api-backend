@@ -4,7 +4,9 @@
   "description": "REST API backend for the CashFlow platform",
   "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc",
+    "build:watch": "tsc -w"
   },
   "repository": {
     "type": "git",
