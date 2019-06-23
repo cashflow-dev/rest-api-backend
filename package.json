@@ -1,0 +1,24 @@
+{
+  "name": "rest-api-backend",
+  "version": "0.0.1",
+  "description": "REST API backend for the CashFlow platform",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cashflow-dev/rest-api-backend.git"
+  },
+  "keywords": [
+    "typescript",
+    "rest",
+    "express"
+  ],
+  "author": "cashflow-dev @ GitHub",
+  "license": "GNU GPLv3",
+  "bugs": {
+    "url": "https://github.com/cashflow-dev/rest-api-backend/issues"
+  },
+  "homepage": "https://github.com/cashflow-dev/rest-api-backend#readme"
+}
