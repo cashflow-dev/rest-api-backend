@@ -13,8 +13,8 @@
   "lint-staged": {
     "src/**/*.ts": [
       "prettier --write",
-      "git add",
-      "eslint"
+      "eslint --fix",
+      "git add"
     ]
   },
   "husky": {
@@ -50,7 +50,7 @@
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^5.0.0",
-    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-import": "^2.18.0",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
