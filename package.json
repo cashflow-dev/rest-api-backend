@@ -62,6 +62,7 @@
     "husky": "^2.4.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
+    "koa-combine-routers": "^4.0.2",
     "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
     "lint-staged": "^8.2.1",
