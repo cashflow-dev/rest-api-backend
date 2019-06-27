@@ -1,6 +1,6 @@
 export interface Service {
-  private input: any;
-  public validator: any;
+  input: any;
+  validators: any;
   [key: string]: any;
 }
 
