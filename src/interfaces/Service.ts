@@ -1,3 +1,5 @@
+import { InputData } from "./InputData";
+
 export interface Service {
   input: any;
   validators: any;
@@ -5,5 +7,5 @@ export interface Service {
 }
 
 export interface ServiceClass {
-  new (dataInput: any): Service;
+  new (inputData: InputData): Service;
 }
