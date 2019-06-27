@@ -1,16 +1,17 @@
 import { ParameterizedContext } from 'koa';
-import { ServiceClass, Service } from '../interfaces/Service';
+import { ServiceClass } from '../interfaces/Service';
+import { InputData } from '../interfaces/InputData';
 
-export const serviceLaunch = (Serviceclass: ServiceClass, context: ParameterizedContext): Service => {
-  const data = {
+export const serviceLaunch = (Serviceclass: ServiceClass, method: string, context: ParameterizedContext): any => {
+  const data: InputData = {
     body: context.request.body,
     params: context.params,
     query: context.request.query,
   };
 
   const service = new Serviceclass(data);
-  service.validator.validate();
-  return service;
+  service.validators[method]();
+  return service[method]();
 };
 
 export default serviceLaunch;
