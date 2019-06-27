@@ -14,3 +14,5 @@ export const serviceLaunch = (Serviceclass: ServiceClass, context: Parameterized
 };
 
 export default serviceLaunch;
+
+export { UserService } from './user/UserService';
