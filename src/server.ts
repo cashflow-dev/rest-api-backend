@@ -3,10 +3,23 @@ import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
 import cors from '@koa/cors';
 import debug from 'debug';
-import router from './routes';
+import fs from 'fs';
+import router from './routes/index';
+import { connect } from './models';
+import Logger from './libs/Logger';
+import 'dotenv/config';
+
+fs.closeSync(fs.openSync(`${__dirname}/${process.env.LOG_PATH}`, 'w'));
+
+const DATABASE = `${process.env.MONGODB_URI}`;
+console.log({ DATABASE });
 
 const PORT = 3003;
 
+connect(
+  DATABASE,
+  Logger.fatal,
+);
 const app = new Koa();
 app.use(cors());
 app.use(bodyParser());
