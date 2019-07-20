@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from '@hapi/joi';
 import { InputData } from '../../interfaces/InputData';
 
 export const validateUpdateBody = (inputData: InputData) => {
