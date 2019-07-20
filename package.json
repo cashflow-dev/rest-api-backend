@@ -8,7 +8,7 @@
     "build": "tsc",
     "build:watch": "tsc -w",
     "lint:eslint": "npx tslint ./src/**/*.ts",
-    "start": "DEBUG=* nodemon --watch './src/**/*.ts' --ignore './src/**/*.spec.ts' --exec 'ts-node' ./src/server.ts"
+    "start": "DEBUG=* nodemon --watch './src/**/*.ts' --ignore './src/**/*.spec.ts' --ignore './src/logs/log.json' --exec 'ts-node --files' ./src/server.ts"
   },
   "lint-staged": {
     "src/**/*.ts": [
