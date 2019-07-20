@@ -1,7 +1,8 @@
 import combineRouters from 'koa-combine-routers';
-import rootRouter from './user';
-import userRouter from './account';
+import userRouter from './user';
+import accountRouter from './account';
+import rootRouter from './root';
 
-const router = combineRouters(rootRouter, userRouter);
+const router = combineRouters(accountRouter, userRouter, rootRouter);
 
 export default router;
