@@ -2,6 +2,7 @@ import Joi from '@hapi/joi';
 import joiObjectId from 'joi-objectid';
 import _ from 'lodash';
 import { InputData } from '../interfaces/InputData';
+import ValidationError from '../helpers/ValidationError';
 
 const ObjectId = joiObjectId(Joi);
 
@@ -46,7 +47,11 @@ export const validateId = (inputData: InputData) => {
 
   const paramsSchema = Joi.object().keys(schema);
 
-  Joi.validate(inputData, paramsSchema, { stripUnknown: { arrays: true, objects: true } });
+  const result = Joi.validate(inputData, paramsSchema, { stripUnknown: { arrays: true, objects: true } });
+  if (result.error) {
+    const validationMessages = result.error.details.map(error => error.message);
+    throw new ValidationError(validationMessages);
+  }
 };
 
 export const validateSearch = (inputData: InputData) => {
@@ -58,7 +63,11 @@ export const validateSearch = (inputData: InputData) => {
 
   const querySchema = Joi.object().keys(schema);
 
-  Joi.validate(inputData, querySchema, { stripUnknown: { arrays: true, objects: true } });
+  const result = Joi.validate(inputData, querySchema, { stripUnknown: { arrays: true, objects: true } });
+  if (result.error) {
+    const validationMessages = result.error.details.map(error => error.message);
+    throw new ValidationError(validationMessages);
+  }
 };
 export const validateQuery = (inputData: InputData) => {
   const schema = {
@@ -71,5 +80,9 @@ export const validateQuery = (inputData: InputData) => {
 
   const querySchema = Joi.object().keys(schema);
 
-  Joi.validate(inputData, querySchema, { stripUnknown: { arrays: true, objects: true } });
+  const result = Joi.validate(inputData, querySchema, { stripUnknown: { arrays: true, objects: true } });
+  if (result.error) {
+    const validationMessages = result.error.details.map(error => error.message);
+    throw new ValidationError(validationMessages);
+  }
 };

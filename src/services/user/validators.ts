@@ -14,7 +14,11 @@ export const validateUpdateBody = (inputData: InputData) => {
     .keys(schema)
     .or('body.email', 'body.password');
 
-  Joi.validate(inputData, bodySchema, { stripUnknown: { arrays: true, objects: true } });
+  const result = Joi.validate(inputData, bodySchema, { stripUnknown: { arrays: true, objects: true } });
+  if (result.error) {
+    const validationMessages = result.error.details.map(error => error.message);
+    throw new ValidationError(validationMessages);
+  }
 };
 export const validateCreateBody = (inputData: InputData) => {
   const schema = {
