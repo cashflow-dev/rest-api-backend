@@ -15,7 +15,6 @@ if (!fs.existsSync(LOG_PATH)) {
 }
 
 const DATABASE = `${process.env.MONGODB_URI}`;
-console.log({ DATABASE });
 
 const PORT = 3003;
 
