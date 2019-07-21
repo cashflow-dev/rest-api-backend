@@ -3,11 +3,8 @@ import { InputData } from '../../interfaces/InputData';
 import { Service } from '../../interfaces/Service';
 import { composeValidators, validateId, validateQuery } from '../../libs/validators';
 import { validateCreateBody, validateUpdateBody } from './validators';
-import ValidationError from '../../helpers/ValidationError';
 import NotFoundError from '../../helpers/NotFoundError';
-import Logger from '../../libs/Logger';
-import MONGO_ERROR from '../../enums/MONGO_ERROR';
-import { getRequestedFields } from '../../helpers';
+import { getRequestedFields, handleMongoErrors } from '../../helpers';
 
 export class UserService implements Service {
   public input: InputData;
@@ -44,16 +41,7 @@ export class UserService implements Service {
       result = await user.save();
       return result;
     } catch (e) {
-      if (e.errmsg.toLowerCase().includes(MONGO_ERROR.DUPLICATE)) {
-        throw new ValidationError([
-          `Duplicate entry: ${e.message
-            .split(' index: ')[1]
-            .split(' ')[0]
-            .replace('_1', '')}`,
-        ]);
-      } else {
-        Logger.error(e.message);
-      }
+      handleMongoErrors(e);
     }
     return result;
   }
@@ -74,7 +62,12 @@ export class UserService implements Service {
   }
 
   public async update(): Promise<User | null> {
-    const user = await UserModel.findByIdAndUpdate(this.input.params.id, this.input.body);
+    let user = null;
+    try {
+      user = await UserModel.findByIdAndUpdate(this.input.params.id, this.input.body);
+    } catch (e) {
+      handleMongoErrors(e);
+    }
     if (user === null) {
       throw new NotFoundError();
     }
@@ -82,7 +75,12 @@ export class UserService implements Service {
   }
 
   public async delete(): Promise<User | null> {
-    const user = await UserModel.findByIdAndDelete(this.input.params.id);
+    let user = null;
+    try {
+      user = await UserModel.findByIdAndDelete(this.input.params.id);
+    } catch (e) {
+      handleMongoErrors(e);
+    }
     if (user === null) {
       throw new NotFoundError();
     }
