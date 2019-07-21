@@ -7,7 +7,7 @@ import { handleHttpErrors } from '../helpers';
 export const create = async (context: ParameterizedContext): Promise<void> => {
   try {
     await serviceLaunch(UserService, 'create', context);
-    context.status = 204;
+    context.status = 201;
   } catch (e) {
     handleHttpErrors(e, context);
   }
