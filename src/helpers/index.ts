@@ -2,9 +2,9 @@ import { ParameterizedContext } from 'koa';
 import { ErrorBody } from '../interfaces/ErrorBody';
 import Logger from '../libs/Logger';
 
-// TODO: FIX
-// export * from './NotFoundError';
-// export * from './ValidationError';
+export * from './NotFoundError';
+export * from './ValidationError';
+
 /* eslint-disable no-param-reassign */
 export const handleHttpErrors = (e: any, context: ParameterizedContext): void => {
   let body: ErrorBody | null = null;
