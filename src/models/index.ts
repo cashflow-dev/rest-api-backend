@@ -9,7 +9,6 @@ export const connect = async (uri: string, errorHandler: Callback) => {
   try {
     await mongoose.connect(uri, { useNewUrlParser: true });
   } catch (e) {
-    console.log({ e });
     errorHandler(e);
   }
 };
