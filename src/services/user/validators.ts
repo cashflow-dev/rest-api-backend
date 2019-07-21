@@ -4,7 +4,7 @@ import ValidationError from '../../helpers/ValidationError';
 
 export const validateUpdateBody = (inputData: InputData) => {
   const schema = {
-    query: {
+    body: {
       email: Joi.string(),
       password: Joi.string(),
     },
@@ -12,7 +12,7 @@ export const validateUpdateBody = (inputData: InputData) => {
 
   const bodySchema = Joi.object()
     .keys(schema)
-    .or('query.email', 'query.password');
+    .or('body.email', 'body.password');
 
   Joi.validate(inputData, bodySchema, { stripUnknown: { arrays: true, objects: true } });
 };

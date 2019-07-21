@@ -45,7 +45,7 @@ export const findById = async (context: ParameterizedContext): Promise<void> => 
 
 export const update = async (context: ParameterizedContext): Promise<void> => {
   try {
-    serviceLaunch(UserService, 'update', context);
+    await serviceLaunch(UserService, 'update', context);
     context.status = 204;
   } catch (e) {
     handleHttpErrors(e, context);
@@ -54,7 +54,7 @@ export const update = async (context: ParameterizedContext): Promise<void> => {
 
 export const deleteById = async (context: ParameterizedContext): Promise<void> => {
   try {
-    serviceLaunch(UserService, 'delete', context);
+    await serviceLaunch(UserService, 'delete', context);
     context.status = 204;
   } catch (e) {
     handleHttpErrors(e, context);

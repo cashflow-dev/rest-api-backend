@@ -58,7 +58,7 @@ export class UserService implements Service {
   }
 
   public async update(): Promise<User | null> {
-    const user = UserModel.findByIdAndUpdate(this.input.params.id, this.input.body);
+    const user = await UserModel.findByIdAndUpdate(this.input.params.id, this.input.body);
     if (user === null) {
       throw new NotFoundError();
     }
@@ -66,7 +66,7 @@ export class UserService implements Service {
   }
 
   public async delete(): Promise<User | null> {
-    const user = UserModel.findByIdAndDelete(this.input.params.id);
+    const user = await UserModel.findByIdAndDelete(this.input.params.id);
     if (user === null) {
       throw new NotFoundError();
     }
