@@ -7,13 +7,17 @@ import ValidationError from '../../helpers/ValidationError';
 import NotFoundError from '../../helpers/NotFoundError';
 import Logger from '../../libs/Logger';
 import MONGO_ERROR from '../../enums/MONGO_ERROR';
+import { getRequestedFields } from '../../helpers';
 
 export class UserService implements Service {
   public input: InputData;
 
+  private DEFAULT_LIMIT: number;
+
   public validators: any;
 
   public constructor(input: InputData) {
+    this.DEFAULT_LIMIT = 50;
     this.input = input;
     this.validators = {
       find: composeValidators(validateQuery),
@@ -25,7 +29,8 @@ export class UserService implements Service {
   }
 
   public async findById(): Promise<User> {
-    const user = await UserModel.findById(this.input.query.id);
+    const requestedFields = this.input.fields ? getRequestedFields(this.input.fields) : { _id: 1 };
+    const user = await UserModel.findById(this.input.params.id).select(requestedFields);
     if (user === null) {
       throw new NotFoundError();
     }
@@ -53,8 +58,19 @@ export class UserService implements Service {
     return result;
   }
 
-  public async find(): Promise<User[]> {
-    return UserModel.find();
+  public async find(): Promise<any> {
+    /* eslint-disable no-underscore-dangle */
+    const requestedFields = this.input.fields ? getRequestedFields(this.input.fields) : { _id: 1 };
+    const queryFilter = this.input.next
+      ? {
+          _id: { $lt: this.input.next },
+        }
+      : {};
+    const users: any = await UserModel.find(queryFilter)
+      .select(requestedFields)
+      .sort({ _id: -1 })
+      .limit(Number(this.input.limit) || this.DEFAULT_LIMIT);
+    return { users, next: users[users.length - 1]._id };
   }
 
   public async update(): Promise<User | null> {

@@ -15,11 +15,12 @@ export const create = async (context: ParameterizedContext): Promise<void> => {
 
 export const find = async (context: ParameterizedContext): Promise<void> => {
   try {
-    const users = await serviceLaunch(UserService, 'find', context);
+    const { users, next } = await serviceLaunch(UserService, 'find', context);
     context.staus = 200;
     const body: SuccessBody = {
       message: 'ok',
       data: users,
+      next,
       statusCode: 200,
     };
     context.body = body;

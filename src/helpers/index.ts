@@ -34,4 +34,13 @@ export const handleHttpErrors = (e: any, context: ParameterizedContext): void =>
   context.body = body;
 };
 
+export const getRequestedFields = (fields: string) => {
+  const fieldsArr = fields.split(',');
+  const requestedFields: any = { _id: 1 };
+  fieldsArr.forEach(field => {
+    requestedFields[field] = 1;
+  });
+  return requestedFields;
+};
+
 export default handleHttpErrors;
