@@ -1,6 +1,7 @@
 import moment from 'moment';
 import bunyan from 'bunyan';
 import chalk from 'chalk';
+import debug from 'debug';
 import 'dotenv/config';
 
 const log = bunyan.createLogger({
@@ -61,7 +62,7 @@ class Logger {
   public static debug(msg: string) {
     const time = moment().format('YYYY-MM-DD h:mm:ss a');
     const logMessage = `${time}: ${msg}`;
-    log.debug(logMessage);
+    debug(logMessage);
   }
 
   public static fatal(msg: string) {

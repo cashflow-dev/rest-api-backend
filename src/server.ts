@@ -2,7 +2,6 @@ import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
 import cors from '@koa/cors';
-import debug from 'debug';
 import fs from 'fs';
 import router from './routes/index';
 import { connect } from './models';
@@ -31,5 +30,5 @@ app.use(logger());
 app.use(router());
 
 app.listen(PORT, (): void => {
-  debug(`API Server listening on port: ${PORT}`);
+  Logger.debug(`API Server listening on port: ${PORT}`);
 });
