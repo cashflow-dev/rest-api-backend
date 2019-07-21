@@ -9,7 +9,11 @@ import { connect } from './models';
 import Logger from './libs/Logger';
 import 'dotenv/config';
 
-fs.closeSync(fs.openSync(`${__dirname}/${process.env.LOG_PATH}`, 'w'));
+const LOG_PATH = `${__dirname}/${process.env.LOG_PATH}`;
+
+if (!fs.existsSync(LOG_PATH)) {
+  fs.closeSync(fs.openSync(LOG_PATH, 'w'));
+}
 
 const DATABASE = `${process.env.MONGODB_URI}`;
 console.log({ DATABASE });
