@@ -9,7 +9,11 @@ import { getRequestedFields, handleMongoErrors } from '../../helpers';
 export class UserService implements Service {
   public input: InputData;
 
-  private DEFAULT_LIMIT: number;
+  public DEFAULT_LIMIT: number;
+
+  public requestedFields: any;
+
+  public queryFilter: any;
 
   public validators: any;
 
@@ -23,11 +27,23 @@ export class UserService implements Service {
       create: composeValidators(validateCreateBody),
       delete: composeValidators(validateId),
     };
+
+    /* eslint-disable no-underscore-dangle */
+    this.requestedFields = this.input.fields ? getRequestedFields(this.input.fields) : { _id: 1 };
+    this.queryFilter = this.input.next
+      ? {
+          _id: { $lt: this.input.next },
+        }
+      : {};
   }
 
-  public async findById(): Promise<User> {
-    const requestedFields = this.input.fields ? getRequestedFields(this.input.fields) : { _id: 1 };
-    const user = await UserModel.findById(this.input.params.id).select(requestedFields);
+  public async findById(): Promise<User | undefined> {
+    let user;
+    try {
+      user = await UserModel.findById(this.input.params.id).select(this.requestedFields);
+    } catch (e) {
+      handleMongoErrors(e);
+    }
     if (user === null) {
       throw new NotFoundError();
     }
@@ -47,17 +63,15 @@ export class UserService implements Service {
   }
 
   public async find(): Promise<any> {
-    /* eslint-disable no-underscore-dangle */
-    const requestedFields = this.input.fields ? getRequestedFields(this.input.fields) : { _id: 1 };
-    const queryFilter = this.input.next
-      ? {
-          _id: { $lt: this.input.next },
-        }
-      : {};
-    const users: any = await UserModel.find(queryFilter)
-      .select(requestedFields)
-      .sort({ _id: -1 })
-      .limit(Number(this.input.limit) || this.DEFAULT_LIMIT);
+    let users: any;
+    try {
+      users = await UserModel.find(this.queryFilter)
+        .select(this.requestedFields)
+        .sort({ _id: -1 })
+        .limit(Number(this.input.limit) || this.DEFAULT_LIMIT);
+    } catch (e) {
+      handleMongoErrors(e);
+    }
     return { users, next: users[users.length - 1]._id };
   }
 
