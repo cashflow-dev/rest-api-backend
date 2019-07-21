@@ -11,6 +11,8 @@ export class UserService implements Service {
 
   public DEFAULT_LIMIT: number;
 
+  public Model: any;
+
   public requestedFields: any;
 
   public queryFilter: any;
@@ -19,6 +21,7 @@ export class UserService implements Service {
 
   public constructor(input: InputData) {
     this.DEFAULT_LIMIT = 50;
+    this.Model = UserModel;
     this.input = input;
     this.validators = {
       find: composeValidators(validateQuery),
@@ -38,24 +41,23 @@ export class UserService implements Service {
   }
 
   public async findById(): Promise<User | undefined> {
-    let user;
+    let result;
     try {
-      user = await UserModel.findById(this.input.params.id).select(this.requestedFields);
+      result = await this.Model.findById(this.input.params.id).select(this.requestedFields);
     } catch (e) {
       handleMongoErrors(e);
     }
-    if (user === null) {
+    if (result === null) {
       throw new NotFoundError();
     }
-    return user;
+    return result;
   }
 
   public async create(): Promise<User | undefined> {
     let result;
     try {
-      const user = new UserModel(this.input.body);
-      result = await user.save();
-      return result;
+      const model = new this.Model(this.input.body);
+      result = await model.save();
     } catch (e) {
       handleMongoErrors(e);
     }
@@ -63,42 +65,42 @@ export class UserService implements Service {
   }
 
   public async find(): Promise<any> {
-    let users: any;
+    let results: any;
     try {
-      users = await UserModel.find(this.queryFilter)
+      results = await this.Model.find(this.queryFilter)
         .select(this.requestedFields)
         .sort({ _id: -1 })
         .limit(Number(this.input.limit) || this.DEFAULT_LIMIT);
     } catch (e) {
       handleMongoErrors(e);
     }
-    return { users, next: users[users.length - 1]._id };
+    return { users: results, next: results[results.length - 1]._id };
   }
 
   public async update(): Promise<User | null> {
-    let user = null;
+    let result = null;
     try {
-      user = await UserModel.findByIdAndUpdate(this.input.params.id, this.input.body);
+      result = await this.Model.findByIdAndUpdate(this.input.params.id, this.input.body);
     } catch (e) {
       handleMongoErrors(e);
     }
-    if (user === null) {
+    if (result === null) {
       throw new NotFoundError();
     }
-    return user;
+    return result;
   }
 
   public async delete(): Promise<User | null> {
-    let user = null;
+    let result = null;
     try {
-      user = await UserModel.findByIdAndDelete(this.input.params.id);
+      result = await this.Model.findByIdAndDelete(this.input.params.id);
     } catch (e) {
       handleMongoErrors(e);
     }
-    if (user === null) {
+    if (result === null) {
       throw new NotFoundError();
     }
-    return user;
+    return result;
   }
 }
 
