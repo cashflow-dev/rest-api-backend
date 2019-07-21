@@ -3,6 +3,7 @@ import { ErrorBody } from '../interfaces/ErrorBody';
 import Logger from '../libs/Logger';
 import MONGO_ERROR from '../enums/MONGO_ERROR';
 import { ValidationError } from './ValidationError';
+import HTTP_STATUS_CODE from '../enums/HTTP_STATUS_CODE';
 
 export * from './NotFoundError';
 export * from './ValidationError';
@@ -12,27 +13,27 @@ export const handleHttpErrors = (e: any, context: ParameterizedContext): void =>
   let body: ErrorBody | null = null;
   switch (e.message) {
     case 'ValidationError':
-      context.status = 400;
+      context.status = HTTP_STATUS_CODE.BAD_REQUEST;
       body = {
-        statusCode: 400,
-        errorCode: 400,
+        statusCode: HTTP_STATUS_CODE.BAD_REQUEST,
+        errorCode: HTTP_STATUS_CODE.BAD_REQUEST,
         errors: e.validationMessages,
         message: e.message,
       };
       break;
     case 'NotFoundError':
-      context.status = 404;
+      context.status = HTTP_STATUS_CODE.NOT_FOUND;
       body = {
-        statusCode: 404,
-        errorCode: 404,
+        statusCode: HTTP_STATUS_CODE.NOT_FOUND,
+        errorCode: HTTP_STATUS_CODE.NOT_FOUND,
         errors: e.message,
         message: e.message,
       };
       break;
     case 'Service Unavailable':
       body = {
-        statusCode: 503,
-        errorCode: 503,
+        statusCode: HTTP_STATUS_CODE.SERVICE_UNAVAILABLE,
+        errorCode: HTTP_STATUS_CODE.SERVICE_UNAVAILABLE,
         errors: e.message,
         message: e.message,
       };
