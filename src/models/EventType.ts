@@ -1,6 +1,5 @@
 import { Schema, model, Document, Types } from 'mongoose';
-
-const { ObjectId } = Schema.Types.ObjectId;
+import { timestamps } from 'mongoose-timestamp';
 
 interface EventType extends Document {
   type: string;
@@ -9,5 +8,7 @@ interface EventType extends Document {
 const eventTypeSchema = new Schema({
   type: { type: String, unique: true },
 });
+
+eventTypeSchema.plugin(timestamps);
 
 export default model<EventType>('EventType', eventTypeSchema);
