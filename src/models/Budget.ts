@@ -1,6 +1,5 @@
-import { Schema, model, Document, Types } from 'mongoose';
-
-const { ObjectId } = Schema.Types.ObjectId;
+import { Schema, model, Document } from 'mongoose';
+import { timestamps } from 'mongoose-timestamp';
 
 interface Budget extends Document {
   name: string;
@@ -13,5 +12,7 @@ const budgetSchema = new Schema({
   amount: Number,
   period: String,
 });
+
+budgetSchema.plugin(timestamps);
 
 export default model<Budget>('Budget', budgetSchema);
