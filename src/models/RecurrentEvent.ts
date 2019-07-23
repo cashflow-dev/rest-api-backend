@@ -1,6 +1,7 @@
 import { Schema, model, Document, Types } from 'mongoose';
 
 const { ObjectId } = Schema.Types.ObjectId;
+const { Any } = Schema.Types.Mixed;
 
 interface RecurrentEvent extends Document {
   eventTypeId: Types.ObjectId;
@@ -11,6 +12,7 @@ interface RecurrentEvent extends Document {
   occurDate: string;
   nextOccurrance: string;
   currency: Currency;
+  meta: any;
 }
 
 interface Account extends Document {
@@ -42,6 +44,7 @@ const recurrentEventSchema = new Schema({
   occursEvery: String,
   occurDate: String,
   nextOccurrance: String,
+  meta: Any,
 });
 
 export default model<RecurrentEvent>('RecurrentEvent', recurrentEventSchema);
