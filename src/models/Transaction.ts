@@ -28,8 +28,10 @@ interface Account extends Document {
 const transactionSchema = new Schema({
   transactionId: ObjectId,
   name: String,
-  originAmount: Number,
-  targetAmount: Number,
+  amount: {
+    origin: Number,
+    target: Number,
+  },
   currency: {
     origin: String,
     target: String,
