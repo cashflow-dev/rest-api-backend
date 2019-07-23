@@ -1,6 +1,6 @@
 import Joi from '@hapi/joi';
 import { InputData } from '../../interfaces/InputData';
-import ValidationError from '../../helpers/ValidationError';
+import { ValidationError } from '../../libs/errors';
 
 export const validateUpdateBody = (inputData: InputData) => {
   const schema = {

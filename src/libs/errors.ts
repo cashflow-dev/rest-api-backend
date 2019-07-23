@@ -1,3 +1,10 @@
+export class NotFoundError extends Error {
+  public constructor() {
+    super('NotFoundError');
+    Error.captureStackTrace(this, NotFoundError);
+  }
+}
+
 export class ValidationError extends Error {
   public validationMessages: string[];
 
@@ -7,5 +14,3 @@ export class ValidationError extends Error {
     Error.captureStackTrace(this, ValidationError);
   }
 }
-
-export default ValidationError;
