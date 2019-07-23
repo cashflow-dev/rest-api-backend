@@ -4,7 +4,7 @@
   "description": "REST API backend for the CashFlow platform",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "npx jest",
     "build": "tsc",
     "build:watch": "tsc -w",
     "lint:eslint": "npx tslint ./src/**/*.ts",
