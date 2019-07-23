@@ -1,6 +1,5 @@
-import { Schema, model, Document, Types } from 'mongoose';
-
-const { ObjectId } = Schema.Types.ObjectId;
+import { Schema, model, Document } from 'mongoose';
+import { timestamps } from 'mongoose-timestamp';
 
 interface Savings extends Document {
   name: string;
@@ -13,5 +12,7 @@ const savingsSchema = new Schema({
   goal: Number,
   category: String,
 });
+
+savingsSchema.plugin(timestamps);
 
 export default model<Savings>('Savings', savingsSchema);
