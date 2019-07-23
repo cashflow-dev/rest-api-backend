@@ -1,5 +1,6 @@
 import { Schema, model, Document } from 'mongoose';
 import { bcrypt } from 'bcrypt';
+import { timestamps } from 'mongoose-timestamp';
 
 const saltRounds = 10;
 
@@ -48,5 +49,7 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
     return null;
   });
 };
+
+userSchema.plugin(timestamps);
 
 export default model<User>('User', userSchema);
