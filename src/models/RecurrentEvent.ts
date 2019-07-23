@@ -1,4 +1,5 @@
 import { Schema, model, Document, Types } from 'mongoose';
+import { timestamps } from 'mongoose-timestamp';
 
 const { ObjectId } = Schema.Types.ObjectId;
 const { Any } = Schema.Types.Mixed;
@@ -46,5 +47,7 @@ const recurrentEventSchema = new Schema({
   nextOccurrance: String,
   meta: Any,
 });
+
+recurrentEventSchema.plugin(timestamps);
 
 export default model<RecurrentEvent>('RecurrentEvent', recurrentEventSchema);
