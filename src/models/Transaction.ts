@@ -6,14 +6,19 @@ interface Transaction extends Document {
   transactionId: Types.ObjectId;
   originAmount: number;
   targetAmount: number;
-  settings: Settings;
+  currency: Currency;
   account: Account;
   name: string;
 }
 
-interface Settings extends Document {
-  originCurrency: string;
-  currency: string;
+interface Amount extends Document {
+  origin: number;
+  target: number;
+}
+
+interface Currency extends Document {
+  origin: string;
+  target: string;
 }
 
 interface Account extends Document {
@@ -26,9 +31,9 @@ const transactionSchema = new Schema({
   name: String,
   originAmount: Number,
   targetAmount: Number,
-  settings: {
-    originCurrency: String,
-    targetCurrency: String,
+  currency: {
+    origin: String,
+    target: String,
   },
   account: {
     fromAccId: ObjectId,
