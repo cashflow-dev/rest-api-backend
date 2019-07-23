@@ -1,4 +1,5 @@
 import { Schema, model, Document, Types } from 'mongoose';
+import { timestamps } from 'mongoose-timestamp';
 
 const { ObjectId } = Schema.Types.ObjectId;
 
@@ -41,5 +42,7 @@ const transactionSchema = new Schema({
     toAccId: ObjectId,
   },
 });
+
+transactionSchema.plugin(timestamps);
 
 export default model<Transaction>('Transaction', transactionSchema);
