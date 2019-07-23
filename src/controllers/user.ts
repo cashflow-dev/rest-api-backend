@@ -2,7 +2,7 @@
 import { ParameterizedContext } from 'koa';
 import { UserService, serviceLaunch } from '../services';
 import { SuccessBody } from '../interfaces/SuccessBody';
-import { handleHttpErrors } from '../helpers';
+import { handleHttpErrors } from '../libs/utils';
 import HTTP_STATUS_CODE from '../enums/HTTP_STATUS_CODE';
 
 export const create = async (context: ParameterizedContext): Promise<void> => {

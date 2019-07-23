@@ -1,6 +1,6 @@
 import { ParameterizedContext } from 'koa';
 import { ErrorBody } from '../interfaces/ErrorBody';
-import Logger from '../libs/Logger';
+import Logger from './Logger';
 import MONGO_ERROR from '../enums/MONGO_ERROR';
 import { ValidationError } from './errors';
 import HTTP_STATUS_CODE from '../enums/HTTP_STATUS_CODE';

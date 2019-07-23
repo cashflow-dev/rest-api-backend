@@ -2,7 +2,7 @@ import Joi from '@hapi/joi';
 import joiObjectId from 'joi-objectid';
 import _ from 'lodash';
 import { InputData } from '../interfaces/InputData';
-import { ValidationError } from '../libs/errors';
+import { ValidationError } from './errors';
 
 const ObjectId = joiObjectId(Joi);
 

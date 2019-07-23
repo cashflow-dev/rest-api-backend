@@ -1,8 +1,8 @@
 import { InputData } from '../interfaces/InputData';
 import { Service } from '../interfaces/Service';
 import { composeValidators, validateId, validateQuery } from './validators';
-import { NotFoundError } from '../libs/errors';
-import { getRequestedFields, handleMongoErrors } from '../helpers';
+import { NotFoundError } from './errors';
+import { getRequestedFields, handleMongoErrors } from './utils';
 
 export class ServiceBase implements Service {
   public input: InputData;
