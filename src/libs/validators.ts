@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import Joi from '@hapi/joi';
 import joiObjectId from 'joi-objectid';
 import _ from 'lodash';
@@ -30,6 +31,7 @@ export const validateId = (inputData: InputData) => {
     const validationMessages = result.error.details.map(error => error.message);
     throw new ValidationError(validationMessages);
   }
+  inputData.params = result.value.params;
 };
 
 export const validateSearch = (inputData: InputData) => {
