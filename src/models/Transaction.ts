@@ -4,8 +4,7 @@ const { ObjectId } = Schema.Types.ObjectId;
 
 interface Transaction extends Document {
   transactionId: Types.ObjectId;
-  originAmount: number;
-  targetAmount: number;
+  amount: Amount;
   currency: Currency;
   account: Account;
   name: string;
