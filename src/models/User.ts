@@ -8,6 +8,11 @@ interface User extends Document {
   email: string;
   password: string;
   currency: Currency;
+  settings: Settings;
+}
+
+interface Settings extends Document {
+  currency: string;
 }
 
 interface Currency extends Document {
@@ -19,6 +24,9 @@ const userSchema = new Schema({
   password: String,
   currency: {
     origin: String,
+  },
+  settings: {
+    currency: String,
   },
 });
 
