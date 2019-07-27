@@ -1,4 +1,5 @@
 import { ParameterizedContext } from 'koa';
+import _ from 'lodash';
 import { ErrorBody } from '../interfaces/ErrorBody';
 import Logger from './Logger';
 import MONGO_ERROR from '../enums/MONGO_ERROR';
@@ -54,6 +55,19 @@ export const handleMongoErrors = (e: any): void => {
     Logger.error(e.message);
     throw new Error('Service Unavailable');
   }
+};
+
+export const stripIdAndNext = (jsonResponse: string) => {
+  const response = JSON.parse(jsonResponse);
+  if (Array.isArray(response.data)) {
+    response.data = response.data.map((obj: object) => _.omit(obj, '_id'));
+  } else {
+    response.data = _.omit(response.data, '_id');
+  }
+  if (response.next) {
+    response.next = response.next !== null ? 'exists' : null;
+  }
+  return JSON.stringify(response);
 };
 
 export const getRequestedFields = (fields: string) => {
