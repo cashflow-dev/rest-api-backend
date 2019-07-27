@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
@@ -28,7 +29,7 @@ connect(
   DATABASE,
   Logger.fatal,
 );
-const app = new Koa();
+export const app = new Koa();
 app.use(cors());
 app.use(bodyParser());
 app.use(logger((str, args) => Logger.debug(`${str}: ${args}`)));
