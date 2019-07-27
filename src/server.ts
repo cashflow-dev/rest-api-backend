@@ -31,7 +31,7 @@ connect(
 const app = new Koa();
 app.use(cors());
 app.use(bodyParser());
-app.use(logger());
+app.use(logger((str, args) => Logger.debug(`${str}: ${args}`)));
 app.use(router());
 
 app.listen(PORT, (): void => {
