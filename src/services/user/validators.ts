@@ -1,6 +1,7 @@
 import Joi from '@hapi/joi';
 import { InputData } from '../../interfaces/InputData';
 import { ValidationError } from '../../libs/errors';
+import Logger from '../../libs/Logger';
 
 export const validateUpdateBody = (inputData: InputData) => {
   const schema = {
@@ -17,6 +18,7 @@ export const validateUpdateBody = (inputData: InputData) => {
   const result = Joi.validate(inputData, bodySchema, { stripUnknown: { arrays: true, objects: true } });
   if (result.error) {
     const validationMessages = result.error.details.map(error => error.message);
+    validationMessages.forEach(Logger.debug);
     throw new ValidationError(validationMessages);
   }
 };
@@ -32,6 +34,7 @@ export const validateCreateBody = (inputData: InputData) => {
   const result = Joi.validate(inputData, bodySchema, { stripUnknown: { arrays: true, objects: true } });
   if (result.error) {
     const validationMessages = result.error.details.map(error => error.message);
+    validationMessages.forEach(Logger.debug);
     throw new ValidationError(validationMessages);
   }
 };

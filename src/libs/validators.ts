@@ -4,6 +4,7 @@ import joiObjectId from 'joi-objectid';
 import _ from 'lodash';
 import { InputData } from '../interfaces/InputData';
 import { ValidationError } from './errors';
+import Logger from './Logger';
 
 const ObjectId = joiObjectId(Joi);
 
@@ -29,6 +30,7 @@ export const validateId = (inputData: InputData) => {
   const result = Joi.validate(inputData, paramsSchema, { stripUnknown: { arrays: true, objects: true } });
   if (result.error) {
     const validationMessages = result.error.details.map(error => error.message);
+    validationMessages.forEach(Logger.debug);
     throw new ValidationError(validationMessages);
   }
   inputData.params = result.value.params;
@@ -46,6 +48,7 @@ export const validateSearch = (inputData: InputData) => {
   const result = Joi.validate(inputData, querySchema, { stripUnknown: { arrays: true, objects: true } });
   if (result.error) {
     const validationMessages = result.error.details.map(error => error.message);
+    validationMessages.forEach(Logger.debug);
     throw new ValidationError(validationMessages);
   }
 };
@@ -63,6 +66,7 @@ export const validateQuery = (inputData: InputData) => {
   const result = Joi.validate(inputData, querySchema, { stripUnknown: { arrays: true, objects: true } });
   if (result.error) {
     const validationMessages = result.error.details.map(error => error.message);
+    validationMessages.forEach(Logger.debug);
     throw new ValidationError(validationMessages);
   }
 };
