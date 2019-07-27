@@ -53,7 +53,7 @@ class Logger {
     log.error(logMessage);
   }
 
-  public static vebose(msg: string) {
+  public static verbose(msg: string) {
     const time = moment().format('YYYY-MM-DD h:mm:ss a');
     const logMessage = `${time}: ${msg}`;
     log.info(logMessage);
