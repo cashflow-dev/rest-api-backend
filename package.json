@@ -4,12 +4,12 @@
   "description": "REST API backend for the CashFlow platform",
   "main": "server.js",
   "scripts": {
-    "test": "npx jest --verbose",
-    "test:watch": "npx jest --verbose --watch",
-    "build": "tsc",
-    "build:watch": "tsc -w",
+    "test": "NODE_ENV=TEST npx jest --verbose",
+    "test:watch": "NODE_ENV=TEST npx jest --verbose --watch",
+    "build": "NODE_ENV=PRODUCTION tsc",
+    "build:watch": "NODE_ENV=PRODUCTION tsc -w",
     "lint:eslint": "npx eslint ./src/**/*.ts",
-    "start": "DEBUG=* nodemon --watch './src/**/*.ts' --ignore './src/**/*.spec.ts' --ignore './src/logs/log.json' --exec 'ts-node --files' ./src/server.ts"
+    "start": "NODE_ENV=DEVELOPMENT DEBUG=* nodemon --watch './src/**/*.ts' --ignore './src/**/*.spec.ts' --ignore './src/logs/log.json' --exec 'ts-node --files' ./src/server.ts"
   },
   "lint-staged": {
     "src/**/*.ts": [
