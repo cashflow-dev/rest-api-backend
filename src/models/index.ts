@@ -6,9 +6,11 @@ mongoose.Promise = global.Promise;
 type Callback = (err: string) => any;
 
 export const connect = async (uri: string, errorHandler: Callback) => {
-  try {
-    await mongoose.connect(uri, { useNewUrlParser: true });
-  } catch (e) {
-    errorHandler(e);
+  if (process.env.NODE_ENV === 'PRODUCTION' || process.env.NODE_ENV === 'DEVELOPMENT') {
+    try {
+      await mongoose.connect(uri, { useNewUrlParser: true });
+    } catch (e) {
+      errorHandler(e);
+    }
   }
 };
