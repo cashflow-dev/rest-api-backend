@@ -60,6 +60,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^5.0.0",
     "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jest": "^22.14.0",
     "jest": "^24.8.0",
     "mongodb-memory-server": "^5.1.9",
     "nodemon": "^1.19.1",
