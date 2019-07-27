@@ -2,7 +2,7 @@
 import { ParameterizedContext } from 'koa';
 import { serviceLaunch } from '../services';
 import { SuccessBody } from '../interfaces/SuccessBody';
-import { handleHttpErrors } from "./utils";
+import { handleHttpErrors } from './utils';
 import HTTP_STATUS_CODE from '../enums/HTTP_STATUS_CODE';
 
 const ControllerBase = (service: any) => {
