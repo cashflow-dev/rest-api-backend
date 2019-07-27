@@ -34,6 +34,8 @@ app.use(bodyParser());
 app.use(logger((str, args) => Logger.debug(`${str}: ${args}`)));
 app.use(router());
 
-app.listen(PORT, (): void => {
-  Logger.debug(`API Server listening on port: ${PORT}`);
-});
+if (!module.parent) {
+  app.listen(PORT, (): void => {
+    Logger.debug(`API Server listening on port: ${PORT}`);
+  });
+}
