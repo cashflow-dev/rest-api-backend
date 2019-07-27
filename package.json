@@ -10,7 +10,8 @@
     "build:watch": "NODE_ENV=PRODUCTION tsc -w",
     "lint:eslint": "npx eslint ./src/**/*.ts",
     "start": "NODE_ENV=DEVELOPMENT nodemon --watch './src/**/*.ts' --ignore './src/**/*.spec.ts' --ignore './src/logs/log.json' --exec 'ts-node --files' ./src/server.ts",
-    "start:debug": "NODE_ENV=DEVELOPMENT DEBUG=* nodemon --watch './src/**/*.ts' --ignore './src/**/*.spec.ts' --ignore './src/logs/log.json' --exec 'ts-node --files' ./src/server.ts"
+    "start:debug": "NODE_ENV=DEVELOPMENT DEBUG=* nodemon --watch './src/**/*.ts' --ignore './src/**/*.spec.ts' --ignore './src/logs/log.json' --exec 'ts-node --files' ./src/server.ts",
+    "serve:apidoc": "npx apidoc -i ./ -o apidoc/ -e node_modules/ -e shared/ && serve apidoc"
   },
   "lint-staged": {
     "src/**/*.ts": [
@@ -34,6 +35,10 @@
     "rest",
     "express"
   ],
+  "apidoc": {
+    "title": "CashFlow API Documentation",
+    "url": "http://localhost:3030"
+  },
   "author": "cashflow-dev @ GitHub",
   "license": "GNU GPLv3",
   "bugs": {
