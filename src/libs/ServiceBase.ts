@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { InputData } from '../interfaces/InputData';
 import { Service } from '../interfaces/Service';
 import { composeValidators, validateId, validateQuery } from './validators';
@@ -69,7 +70,7 @@ export class ServiceBase implements Service {
     } catch (e) {
       handleMongoErrors(e);
     }
-    return { users: results, next: results[results.length - 1]._id };
+    return { users: results, next: _.get(results[results.length - 1], '_id', null) };
   }
 
   public async update(): Promise<any> {
