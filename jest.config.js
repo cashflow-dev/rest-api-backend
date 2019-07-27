@@ -1,5 +1,6 @@
 module.exports = {
   verbose: true,
+  roots: ['<rootDir>/src'],
   bail: 1,
   cache: true,
   preset: 'ts-jest',
