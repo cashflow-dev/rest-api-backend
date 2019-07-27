@@ -39,7 +39,6 @@ describe('/libs/validators.ts', () => {
       };
       it('should strip not validated input', () => {
         validateId(inputMock);
-        console.log({ inputMock });
         expect(Object.keys(inputMock.params).length).toBe(1);
       });
     });
