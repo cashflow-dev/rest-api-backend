@@ -4,8 +4,8 @@
   "description": "REST API backend for the CashFlow platform",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV=TEST npx jest --verbose",
-    "test:watch": "NODE_ENV=TEST npx jest --verbose --watch",
+    "test": "NODE_ENV=TEST npx jest --verbose --detectOpenHandles",
+    "test:watch": "NODE_ENV=TEST npx jest --verbose --watch --detectOpenHandles",
     "build": "NODE_ENV=PRODUCTION tsc",
     "build:watch": "NODE_ENV=PRODUCTION tsc -w",
     "lint:eslint": "npx eslint ./src/**/*.ts",
