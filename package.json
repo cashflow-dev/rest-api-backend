@@ -5,9 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "npx jest",
+    "test:watch": "npx jest --watch",
     "build": "tsc",
     "build:watch": "tsc -w",
-    "lint:eslint": "npx tslint ./src/**/*.ts",
+    "lint:eslint": "npx eslint ./src/**/*.ts",
     "start": "DEBUG=* nodemon --watch './src/**/*.ts' --ignore './src/**/*.spec.ts' --ignore './src/logs/log.json' --exec 'ts-node --files' ./src/server.ts"
   },
   "lint-staged": {
@@ -59,6 +60,7 @@
     "eslint-config-prettier": "^5.0.0",
     "eslint-plugin-import": "^2.18.0",
     "jest": "^24.8.0",
+    "mongodb-memory-server": "^5.1.9",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2",
     "supertest": "^4.0.2",
