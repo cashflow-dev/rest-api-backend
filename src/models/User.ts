@@ -1,6 +1,6 @@
 import { Schema, model, Document } from 'mongoose';
 import bcrypt from 'bcrypt';
-import { timestamps } from 'mongoose-timestamp';
+import timestamps from 'mongoose-timestamp';
 
 const saltRounds = 10;
 
