@@ -31,7 +31,7 @@ const userSchema = new Schema({
 });
 
 userSchema.pre('save', function(next) {
-  const user = this;
+  const user = this as User;
 
   if (!user.isModified('password')) return next();
 
@@ -50,7 +50,8 @@ userSchema.pre('save', function(next) {
   return null;
 });
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
+type Callback = (error: null | Error, isMatch?: boolean) => void;
+userSchema.methods.comparePassword = function(candidatePassword: string, cb: Callback) {
   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
     if (err) return cb(err);
     cb(null, isMatch);
