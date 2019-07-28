@@ -1,4 +1,4 @@
-import { Schema, model, Document, Types } from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
 import { timestamps } from 'mongoose-timestamp';
 
 interface EventType extends Document {
