@@ -51,13 +51,16 @@ export const validateSearch = (inputData: InputData) => {
     validationMessages.forEach(Logger.debug);
     throw new ValidationError(validationMessages);
   }
+  inputData.query = result.value.query;
 };
 export const validateQuery = (inputData: InputData) => {
   const schema = {
     query: {
       next: ObjectId().error(() => 'Not a valid cursor'),
       fields: Joi.string(),
-      limit: Joi.number().max(50),
+      limit: Joi.number()
+        .max(50)
+        .min(1),
     },
   };
 
@@ -69,4 +72,5 @@ export const validateQuery = (inputData: InputData) => {
     validationMessages.forEach(Logger.debug);
     throw new ValidationError(validationMessages);
   }
+  inputData.query = result.value.query;
 };

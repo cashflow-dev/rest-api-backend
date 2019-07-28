@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import Joi from '@hapi/joi';
 import { InputData } from '../../interfaces/InputData';
 import { ValidationError } from '../../libs/errors';
@@ -21,6 +22,7 @@ export const validateUpdateBody = (inputData: InputData) => {
     validationMessages.forEach(Logger.debug);
     throw new ValidationError(validationMessages);
   }
+  inputData.body = result.value.body;
 };
 export const validateCreateBody = (inputData: InputData) => {
   const schema = {
@@ -37,4 +39,5 @@ export const validateCreateBody = (inputData: InputData) => {
     validationMessages.forEach(Logger.debug);
     throw new ValidationError(validationMessages);
   }
+  inputData.body = result.value.body;
 };
