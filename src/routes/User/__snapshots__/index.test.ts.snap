@@ -2,14 +2,10 @@
 
 exports[`/user GET /user should get users 1`] = `"{\\"message\\":\\"ok\\",\\"data\\":[{\\"email\\":\\"test4@test.com\\",\\"password\\":\\"test4\\"},{\\"email\\":\\"test3@test.com\\",\\"password\\":\\"test3\\"},{\\"email\\":\\"test2@test.com\\",\\"password\\":\\"test2\\"},{\\"email\\":\\"test1@test.com\\",\\"password\\":\\"test1\\"},{\\"email\\":\\"test0@test.com\\",\\"password\\":\\"test0\\"}],\\"next\\":\\"exists\\",\\"statusCode\\":200}"`;
 
-exports[`/user GET /user:id should return user & match snapshot 1`] = `"{\\"statusCode\\":400,\\"errorCode\\":400,\\"errors\\":[\\"Not a valid id\\"],\\"message\\":\\"ValidationError\\",\\"data\\":{}}"`;
-
-exports[`/user GET /user:id shuld match with the user in the database 1`] = `"{\\"message\\":\\"ok\\",\\"data\\":[{\\"email\\":\\"test4@test.com\\",\\"password\\":\\"test4\\"},{\\"email\\":\\"test3@test.com\\",\\"password\\":\\"test3\\"},{\\"email\\":\\"test2@test.com\\",\\"password\\":\\"test2\\"},{\\"email\\":\\"test1@test.com\\",\\"password\\":\\"test1\\"},{\\"email\\":\\"test0@test.com\\",\\"password\\":\\"test0\\"}],\\"next\\":\\"exists\\",\\"statusCode\\":200}"`;
+exports[`/user GET /user:id should return user & match snapshot 1`] = `"{\\"message\\":\\"ok\\",\\"data\\":{\\"email\\":\\"test0@test.com\\",\\"password\\":\\"newTestPassword\\"},\\"statusCode\\":200}"`;
 
 exports[`/user POST /user with all fields should match snapshot 1`] = `"Created"`;
 
 exports[`/user POST /user with fields missing with email missing should match snapshot 1`] = `"{\\"statusCode\\":400,\\"errorCode\\":400,\\"errors\\":[\\"\\\\\\"email\\\\\\" is required\\"],\\"message\\":\\"ValidationError\\"}"`;
 
 exports[`/user POST /user with fields missing with password missing should match snapshot 1`] = `"{\\"statusCode\\":400,\\"errorCode\\":400,\\"errors\\":[\\"\\\\\\"password\\\\\\" is required\\"],\\"message\\":\\"ValidationError\\"}"`;
-
-exports[`/user POST /user with fields missing with password missing should match snapshot 2`] = `"{\\"message\\":\\"ok\\",\\"data\\":[{\\"email\\":\\"test4@test.com\\",\\"password\\":\\"test4\\"},{\\"email\\":\\"test3@test.com\\",\\"password\\":\\"test3\\"},{\\"email\\":\\"test2@test.com\\",\\"password\\":\\"test2\\"},{\\"email\\":\\"test1@test.com\\",\\"password\\":\\"test1\\"},{\\"email\\":\\"test0@test.com\\",\\"password\\":\\"test0\\"}],\\"next\\":\\"exists\\",\\"statusCode\\":200}"`;
