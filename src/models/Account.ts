@@ -1,7 +1,7 @@
 import { Schema, model, Document, Types } from 'mongoose';
 import { timestamps } from 'mongoose-timestamp';
 
-const { ObjectId } = Schema.Types.ObjectId;
+const { ObjectId } = Schema.Types;
 
 interface Account extends Document {
   ownerId: Types.ObjectId;
