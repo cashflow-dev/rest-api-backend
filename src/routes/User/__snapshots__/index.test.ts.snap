@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/user GET /user should get users 1`] = `"{\\"message\\":\\"ok\\",\\"data\\":[{\\"email\\":\\"test4@test.com\\",\\"password\\":\\"test4\\"},{\\"email\\":\\"test3@test.com\\",\\"password\\":\\"test3\\"},{\\"email\\":\\"test2@test.com\\",\\"password\\":\\"test2\\"},{\\"email\\":\\"test1@test.com\\",\\"password\\":\\"test1\\"},{\\"email\\":\\"test0@test.com\\",\\"password\\":\\"test0\\"}],\\"next\\":\\"exists\\",\\"statusCode\\":200}"`;
+exports[`/user GET /user should get users 1`] = `"{\\"message\\":\\"ok\\",\\"data\\":[{\\"email\\":\\"test4@test.com\\",\\"password\\":\\"hashed\\"},{\\"email\\":\\"test3@test.com\\",\\"password\\":\\"hashed\\"},{\\"email\\":\\"test2@test.com\\",\\"password\\":\\"hashed\\"},{\\"email\\":\\"test1@test.com\\",\\"password\\":\\"hashed\\"},{\\"email\\":\\"test0@test.com\\",\\"password\\":\\"hashed\\"}],\\"next\\":\\"exists\\",\\"statusCode\\":200}"`;
 
 exports[`/user GET /user:id should return user & match snapshot 1`] = `"{\\"message\\":\\"ok\\",\\"data\\":{\\"email\\":\\"test0@test.com\\",\\"password\\":\\"newTestPassword\\"},\\"statusCode\\":200}"`;
 
