@@ -4,7 +4,7 @@ import { timestamps } from 'mongoose-timestamp';
 
 const saltRounds = 10;
 
-interface User extends Document {
+export interface User extends Document {
   email: string;
   password: string;
   currency: Currency;
