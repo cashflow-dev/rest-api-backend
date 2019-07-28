@@ -7,7 +7,7 @@ interface Transaction extends Document {
   transactionId: Types.ObjectId;
   amount: Amount;
   currency: Currency;
-  account: Account;
+  accounts: Accounts;
   name: string;
 }
 
@@ -21,9 +21,9 @@ interface Currency extends Document {
   target: string;
 }
 
-interface Account extends Document {
-  fromAccId: Types.ObjectId;
-  toAccId: Types.ObjectId;
+interface Accounts extends Document {
+  fromId: Types.ObjectId;
+  toId: Types.ObjectId;
 }
 
 const transactionSchema = new Schema({
@@ -37,9 +37,9 @@ const transactionSchema = new Schema({
     origin: String,
     target: String,
   },
-  account: {
-    fromAccId: ObjectId,
-    toAccId: ObjectId,
+  accounts: {
+    fromId: ObjectId,
+    toId: ObjectId,
   },
 });
 

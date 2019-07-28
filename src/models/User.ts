@@ -7,7 +7,6 @@ const saltRounds = 10;
 export interface User extends Document {
   email: string;
   password: string;
-  currency: Currency;
   settings: Settings;
 }
 
@@ -15,16 +14,9 @@ interface Settings extends Document {
   currency: string;
 }
 
-interface Currency extends Document {
-  origin: string;
-}
-
 const userSchema = new Schema({
   email: { type: String, unique: true },
   password: String,
-  currency: {
-    origin: String,
-  },
   settings: {
     currency: String,
   },

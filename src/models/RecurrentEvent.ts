@@ -37,9 +37,9 @@ const recurrentEventSchema = new Schema({
     origin: String,
     target: String,
   },
-  account: {
-    fromAccId: ObjectId,
-    toAccId: ObjectId,
+  accounts: {
+    fromId: ObjectId,
+    toId: ObjectId,
   },
   lastOccurred: String,
   occursEvery: String,
