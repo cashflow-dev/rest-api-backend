@@ -6,7 +6,7 @@ const UserController = () => {
   const service = UserService;
   const controllerBase = ControllerBase(service);
   const controller: any = {};
-  return Object.assign(controller, controllerBase);
+  return Object.assign(controllerBase, controller);
 };
 
 export default UserController;
