@@ -46,6 +46,7 @@
   },
   "homepage": "https://github.com/cashflow-dev/rest-api-backend#readme",
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/bunyan": "^1.8.6",
     "@types/debug": "^4.1.4",
     "@types/hapi__joi": "^15.0.2",
