@@ -8,17 +8,18 @@ interface RecurrentEvent extends Document {
   eventTypeId: Types.ObjectId;
   name: string;
   amount: Amount;
+  accounts: Accounts;
   lastOccurred: string;
   occursEvery: string;
   occurDate: string;
   nextOccurrance: string;
-  currency: Currency;
+  currency: string;
   meta: any;
 }
 
-interface Account extends Document {
-  fromAccId: Types.ObjectId;
-  toAccId: Types.ObjectId;
+interface Accounts extends Document {
+  fromId: Types.ObjectId;
+  toId: Types.ObjectId;
 }
 
 interface Amount extends Document {
