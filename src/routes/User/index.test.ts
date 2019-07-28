@@ -28,7 +28,18 @@ describe('/user', () => {
   describe('GET /user', () => {
     it('should get users', async () => {
       const response = await request(server).get('/user?fields=email,password');
-      expect(stripIdAndNext(response.text)).toMatchSnapshot();
+
+      // Fix password hash
+      const res = JSON.parse(response.text);
+      const data = res.data.map((obj: any) => {
+        return {
+          ...obj,
+          password: obj.password ? 'hashed' : obj.password,
+        };
+      });
+      const result = JSON.stringify({ ...res, data });
+
+      expect(stripIdAndNext(result)).toMatchSnapshot();
       expect(response.status).toBe(200);
       expect(JSON.parse(response.text).data.length).toBeGreaterThan(0);
     });
@@ -43,7 +54,7 @@ describe('/user', () => {
         response = await request(server)
           .post('/user')
           .send(user);
-        dbUser = await User.find(user);
+        dbUser = await User.find({ email: user.email });
       });
       it('should match snapshot', async () => {
         expect(response.text).toMatchSnapshot();
