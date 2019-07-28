@@ -1,4 +1,3 @@
-/* eslint-disable */
 declare module 'mongoose-timestamp' {
-  export function timestamps(): void;
+  export default function timestamps(): void;
 }
