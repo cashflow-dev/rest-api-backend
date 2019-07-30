@@ -30,3 +30,4 @@ export const serviceLaunch = async (Serviceclass: ServiceClass, method: string, 
 export default serviceLaunch;
 
 export { UserService } from './user';
+export { AccountService } from './account';

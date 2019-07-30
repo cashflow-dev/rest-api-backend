@@ -9,3 +9,5 @@ exports[`/user POST /user with all fields should match snapshot 1`] = `"Created"
 exports[`/user POST /user with fields missing with email missing should match snapshot 1`] = `"{\\"statusCode\\":400,\\"errorCode\\":400,\\"errors\\":[\\"\\\\\\"email\\\\\\" is required\\"],\\"message\\":\\"ValidationError\\"}"`;
 
 exports[`/user POST /user with fields missing with password missing should match snapshot 1`] = `"{\\"statusCode\\":400,\\"errorCode\\":400,\\"errors\\":[\\"\\\\\\"password\\\\\\" is required\\"],\\"message\\":\\"ValidationError\\"}"`;
+
+exports[`/user POST /user with fields missing with password missing should match snapshot 2`] = `"{\\"message\\":\\"ok\\",\\"data\\":[{\\"email\\":\\"test4@test.com\\",\\"password\\":\\"hashed\\"},{\\"email\\":\\"test3@test.com\\",\\"password\\":\\"hashed\\"},{\\"email\\":\\"test2@test.com\\",\\"password\\":\\"hashed\\"},{\\"email\\":\\"test1@test.com\\",\\"password\\":\\"hashed\\"},{\\"email\\":\\"test0@test.com\\",\\"password\\":\\"hashed\\"}],\\"next\\":\\"exists\\",\\"statusCode\\":200}"`;

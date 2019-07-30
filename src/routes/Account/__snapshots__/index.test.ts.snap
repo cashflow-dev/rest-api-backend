@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/account GET /account should match snapshot 1`] = `"{\\"message\\":\\"ok\\",\\"data\\":[{\\"balance\\":4,\\"name\\":\\"4\\"},{\\"balance\\":3,\\"name\\":\\"3\\"},{\\"balance\\":2,\\"name\\":\\"2\\"},{\\"balance\\":1,\\"name\\":\\"1\\"},{\\"balance\\":0,\\"name\\":\\"0\\"}],\\"next\\":\\"exists\\",\\"statusCode\\":200}"`;
+
+exports[`/account GET /account/:id should match snapshot 1`] = `"{\\"message\\":\\"ok\\",\\"data\\":{},\\"statusCode\\":200}"`;
+
+exports[`/account POST /account with all fields should match snapshot 1`] = `"Created"`;
+
+exports[`/account POST /account with field missing with ownerId missing should match snapshot 1`] = `"{\\"statusCode\\":400,\\"errorCode\\":400,\\"errors\\":[\\"\\\\\\"ownerId\\\\\\" is required\\"],\\"message\\":\\"ValidationError\\"}"`;
