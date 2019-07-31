@@ -6,6 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=TEST jest --verbose --detectOpenHandles --runInBand --forceExit --collectCoverage",
     "test:watch": "NODE_ENV=TEST npx jest --verbose --watch --detectOpenHandles --runInBand --forceExit --collectCoverage",
+    "test:deploy": "NODE_ENV=TEST jest --verbose --detectOpenHandles --runInBand --collectCoverage",
     "build": "NODE_ENV=PRODUCTION tsc",
     "build:watch": "NODE_ENV=PRODUCTION tsc -w",
     "lint:eslint": "npx eslint ./src/**/*.ts",
