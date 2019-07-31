@@ -41,5 +41,5 @@ const setup = async () => {
 };
 
 (async () => {
-  await setup();
+  //await setup();
 })();
