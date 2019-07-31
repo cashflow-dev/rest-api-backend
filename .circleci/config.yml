@@ -34,5 +34,5 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: npm run lint:eslint
-      - run: npm run test
+      - run: npm run test:deploy
       - run: npm run build
