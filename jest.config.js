@@ -15,5 +15,5 @@ module.exports = {
   displayName: 'api-server',
   setupFiles: ['./jest.setup.ts'],
   // globalSetup: './jest.init.ts',
-  globalTeardown: './jest.teardown.ts',
+  // globalTeardown: './jest.teardown.ts',
 };
