@@ -4,7 +4,7 @@
   "description": "REST API backend for the CashFlow platform",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV=TEST npx jest --verbose --detectOpenHandles --runInBand --collectCoverage",
+    "test": "NODE_ENV=TEST npx jest --verbose --detectOpenHandles --runInBand --forceExit --collectCoverage",
     "test:watch": "NODE_ENV=TEST npx jest --verbose --watch --detectOpenHandles --runInBand --forceExit --collectCoverage",
     "build": "NODE_ENV=PRODUCTION tsc",
     "build:watch": "NODE_ENV=PRODUCTION tsc -w",
