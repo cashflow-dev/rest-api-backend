@@ -8,12 +8,15 @@ module.exports = {
       tsConfig: 'tsconfig.json',
     },
   },
+  transform: {
+    '^.+\\.ts$': 'ts-jest',
+  },
   testEnvironment: 'node',
   preset: 'ts-jest',
   cacheDirectory: '/tmp',
   collectCoverageFrom: ['./src/**/*.ts'],
   displayName: 'api-server',
-  setupFiles: ['./jest.setup.ts'],
-  // globalSetup: './jest.init.ts',
-  // globalTeardown: './jest.teardown.ts',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  // globalSetup: './jest.init.js',
+  // globalTeardown: './jest.teardown.js',
 };
