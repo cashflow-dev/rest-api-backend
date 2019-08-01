@@ -14,6 +14,6 @@ module.exports = {
   collectCoverageFrom: ['./src/**/*.ts'],
   displayName: 'api-server',
   setupFiles: ['./jest.setup.ts'],
-  // globalSetup: './jest.init.ts',
-  // globalTeardown: './jest.teardown.ts',
+  globalSetup: './jest.init.js',
+  globalTeardown: './jest.teardown.js',
 };
