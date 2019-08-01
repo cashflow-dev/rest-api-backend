@@ -8,6 +8,9 @@ module.exports = {
       tsConfig: 'tsconfig.json',
     },
   },
+  transform: {
+    '^.+\\.ts$': 'ts-jest',
+  },
   testEnvironment: 'node',
   preset: 'ts-jest',
   cacheDirectory: '/tmp',
