@@ -1,14 +1,14 @@
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import Logger from './src/libs/Logger';
-const mongoose = require('mongoose');
+// import { MongoMemoryServer } from 'mongodb-memory-server';
+// import Logger from './src/libs/Logger';
+// const mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
-const globalAny: any = global;
+// mongoose.Promise = global.Promise;
+// const globalAny: any = global;
 
-let mongoServer: any;
+// let mongoServer: any;
 jest.setTimeout(30000);
 
-const setup = async () => {
+/*const setup = async () => {
   Logger.debug('Test setup runs...');
   try {
     mongoServer = new MongoMemoryServer();
@@ -42,4 +42,4 @@ const setup = async () => {
 
 (async () => {
   //await setup();
-})();
+})();*/
