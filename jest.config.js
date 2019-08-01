@@ -16,7 +16,7 @@ module.exports = {
   cacheDirectory: '/tmp',
   collectCoverageFrom: ['./src/**/*.ts'],
   displayName: 'api-server',
-  setupFiles: ['./jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   // globalSetup: './jest.init.js',
   // globalTeardown: './jest.teardown.js',
 };
