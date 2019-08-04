@@ -5,20 +5,20 @@ const { ObjectId } = Schema.Types.ObjectId;
 
 interface Transaction extends Document {
   transactionId: Types.ObjectId;
-  amount: Amount;
-  currency: Currency;
+  origin: Origin;
+  target: Target;
   account: Account;
   name: string;
 }
 
-interface Amount extends Document {
-  origin: number;
-  target: number;
+interface Origin extends Document {
+  currency: string;
+  amount: number;
 }
 
-interface Currency extends Document {
-  origin: string;
-  target: string;
+interface Target extends Document {
+  currency: string;
+  amount: number;
 }
 
 interface Account extends Document {
@@ -29,13 +29,13 @@ interface Account extends Document {
 const transactionSchema = new Schema({
   transactionId: ObjectId,
   name: String,
-  amount: {
-    origin: Number,
-    target: Number,
+  origin: {
+    currency: String,
+    amount: Number,
   },
-  currency: {
-    origin: String,
-    target: String,
+  target: {
+    currency: String,
+    amount: Number,
   },
   account: {
     fromAccId: ObjectId,
