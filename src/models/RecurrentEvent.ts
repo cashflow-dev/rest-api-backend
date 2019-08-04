@@ -21,11 +21,6 @@ interface Accounts extends Document {
   toId: Types.ObjectId;
 }
 
-interface Amount extends Document {
-  origin: number;
-  target: number;
-}
-
 interface Origin extends Document {
   currency: string;
   amount: number;
