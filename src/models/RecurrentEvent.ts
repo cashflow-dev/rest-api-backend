@@ -6,13 +6,13 @@ const { ObjectId, Mixed } = Schema.Types;
 interface RecurrentEvent extends Document {
   eventTypeId: Types.ObjectId;
   name: string;
-  amount: Amount;
-  accounts: Accounts;
   lastOccurred: string;
   occursEvery: string;
   occurDate: string;
   nextOccurrance: string;
-  currency: string;
+  accounts: Accounts;
+  origin: Origin;
+  target: Target;
   meta: any;
 }
 
@@ -21,21 +21,26 @@ interface Accounts extends Document {
   toId: Types.ObjectId;
 }
 
-interface Amount extends Document {
-  origin: number;
-  target: number;
+interface Origin extends Document {
+  currency: string;
+  amount: number;
+}
+
+interface Target extends Document {
+  currency: string;
+  amount: number;
 }
 
 const recurrentEventSchema = new Schema({
   eventTypeId: ObjectId,
   name: String,
-  amount: {
-    origin: Number,
-    target: Number,
+  origin: {
+    currency: String,
+    amount: Number,
   },
-  currency: {
-    origin: String,
-    target: String,
+  target: {
+    currency: String,
+    amount: Number,
   },
   accounts: {
     fromId: ObjectId,
