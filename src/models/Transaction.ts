@@ -1,13 +1,13 @@
 import { Schema, model, Document, Types } from 'mongoose';
-import { timestamps } from 'mongoose-timestamp';
+import timestamps from 'mongoose-timestamp';
 
-const { ObjectId } = Schema.Types.ObjectId;
+const { ObjectId } = Schema.Types;
 
 interface Transaction extends Document {
   transactionId: Types.ObjectId;
-  origin: Origin;
-  target: Target;
-  account: Account;
+  amount: Amount;
+  currency: Currency;
+  accounts: Accounts;
   name: string;
 }
 
@@ -21,9 +21,9 @@ interface Target extends Document {
   amount: number;
 }
 
-interface Account extends Document {
-  fromAccId: Types.ObjectId;
-  toAccId: Types.ObjectId;
+interface Accounts extends Document {
+  fromId: Types.ObjectId;
+  toId: Types.ObjectId;
 }
 
 const transactionSchema = new Schema({
@@ -37,9 +37,9 @@ const transactionSchema = new Schema({
     currency: String,
     amount: Number,
   },
-  account: {
-    fromAccId: ObjectId,
-    toAccId: ObjectId,
+  accounts: {
+    fromId: ObjectId,
+    toId: ObjectId,
   },
 });
 
