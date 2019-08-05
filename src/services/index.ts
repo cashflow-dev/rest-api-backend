@@ -31,3 +31,4 @@ export default serviceLaunch;
 
 export { UserService } from './user';
 export { AccountService } from './account';
+export { SessionService } from './session';

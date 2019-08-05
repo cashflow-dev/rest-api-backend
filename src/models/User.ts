@@ -1,6 +1,7 @@
 import { Schema, model, Document } from 'mongoose';
 import bcrypt from 'bcrypt';
 import timestamps from 'mongoose-timestamp';
+import { ValidationError } from '../libs/errors';
 
 const saltRounds = 10;
 
@@ -42,12 +43,13 @@ userSchema.pre('save', function(next) {
   return null;
 });
 
-type Callback = (error: null | Error, isMatch?: boolean) => void;
-userSchema.methods.comparePassword = function(candidatePassword: string, cb: Callback) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-    if (err) return cb(err);
-    cb(null, isMatch);
-    return null;
+userSchema.methods.comparePassword = function(candidatePassword: string) {
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+      if (err) return reject(err);
+      if (isMatch) return resolve(isMatch);
+      throw new ValidationError(['Wrong password']);
+    });
   });
 };
 
