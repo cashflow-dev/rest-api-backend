@@ -10,9 +10,9 @@ const service = SessionService;
 const SessionController = () => {
   const controller: any = {};
 
-  controller.signIn = async (context: ParameterizedContext) => {
+  controller.create = async (context: ParameterizedContext) => {
     try {
-      const token = await serviceLaunch(service, 'signIn', context);
+      const token = await serviceLaunch(service, 'create', context);
       context.status = HTTP_STATUS_CODE.OK;
       const body: SuccessBody = {
         message: 'ok',

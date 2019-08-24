@@ -45,7 +45,7 @@ userSchema.pre('save', function(next) {
 
 userSchema.methods.comparePassword = function(candidatePassword: string) {
   return new Promise((resolve, reject) => {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    bcrypt.compare(candidatePassword, this.password, function(err: any, isMatch: boolean) {
       if (err) return reject(err);
       if (isMatch) return resolve(isMatch);
       throw new ValidationError(['Wrong password']);

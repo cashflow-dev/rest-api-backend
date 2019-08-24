@@ -5,7 +5,7 @@ const router = new Router({ prefix: '/session' });
 const controller = SessionController();
 
 router.get('/session', controller.refresh);
-router.post('/session', controller.signIn);
+router.post('/session', controller.create);
 router.delete('/session', controller.destroy);
 
 export default router;

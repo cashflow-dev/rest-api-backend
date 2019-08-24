@@ -11,6 +11,11 @@ export class UserService extends ServiceBase {
     this.validators.update = composeValidators(validateId, validateUpdateBody);
     this.validators.create = composeValidators(validateCreateBody);
   }
+
+  public async checkPassword({ email, password}): Promise<boolean> {
+    const user = await UserModel.find({email});
+    await user.comparePassword(password);
+  }
 }
 
 export default UserService;

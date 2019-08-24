@@ -31,9 +31,12 @@ export class ServiceBase implements Service {
     this.requestedFields = this.input.fields ? getRequestedFields(this.input.fields) : { _id: 1 };
     this.queryFilter = this.input.next
       ? {
+          ...this.input.filters,
           _id: { $lt: this.input.next },
         }
-      : {};
+      : {
+        ...this.input.filters,
+      };
   }
 
   public async findById(): Promise<any> {
