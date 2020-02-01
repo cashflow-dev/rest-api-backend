@@ -5,6 +5,13 @@ export class NotFoundError extends Error {
   }
 }
 
+export class UnauthorizedError extends Error {
+  public constructor() {
+    super('Unauthorized');
+    Error.captureStackTrace(this, UnauthorizedError);
+  }
+}
+
 export class ValidationError extends Error {
   public validationMessages: string[];
 
