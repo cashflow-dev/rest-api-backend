@@ -51,6 +51,15 @@ userSchema.methods.comparePassword = function(candidatePassword: string, cb: Cal
   });
 };
 
+// Temporary solution
+export const comparePassword = (password: string, hashedPassword: string) =>
+  new Promise((resolve, reject) => {
+    bcrypt.compare(password, hashedPassword, function(err: any, isMatch: boolean) {
+      if (err) return reject(err);
+      return resolve(isMatch);
+    });
+  });
+
 userSchema.plugin(timestamps);
 
 export default model<User>('User', userSchema);
