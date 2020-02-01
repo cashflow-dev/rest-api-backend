@@ -1,10 +1,13 @@
 import { ParameterizedContext } from 'koa';
+import jwt from 'jsonwebtoken';
 import _ from 'lodash';
 import { ErrorBody } from '../interfaces/ErrorBody';
 import Logger from './Logger';
 import MONGO_ERROR from '../enums/MONGO_ERROR';
 import { ValidationError } from './errors';
 import HTTP_STATUS_CODE from '../enums/HTTP_STATUS_CODE';
+
+export const generateJWT = () => jwt.sign({}, `${process.env.JWT_SECRET}`);
 
 /* eslint-disable no-param-reassign */
 export const handleHttpErrors = (e: any, context: ParameterizedContext): void => {
